@@ -1,1 +1,85 @@
-<dd></dd>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Recording</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #attendance-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div id="attendance-form">
+    <h2>Attendance Recording</h2>
+    <form id="record-form">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" required>
+
+        <label for="attendanceStatus">Attendance Status:</label>
+        <select id="attendanceStatus" required>
+            <option value="present">Present</option>
+            <option value="absent">Absent</option>
+        </select>
+
+        <button type="button" onclick="recordAttendance()">Submit</button>
+    </form>
+</div>
+
+<script>
+    function recordAttendance() {
+        var studentName = document.getElementById('studentName').value;
+        var attendanceStatus = document.getElementById('attendanceStatus').value;
+
+        // You can perform further actions here, such as sending the data to a server or storing it locally.
+
+        alert('Attendance recorded for ' + studentName + ': ' + attendanceStatus);
+        
+        // Optional: Clear the form after recording attendance
+        document.getElementById('record-form').reset();
+    }
+</script>
+
+</body>
+</html>
