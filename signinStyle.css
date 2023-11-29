@@ -1,0 +1,12 @@
+
+
+body {
+    background-color: #f8f9fa;
+}
+
+.signin-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    margin-top: 100px;
+}
