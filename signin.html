@@ -12,7 +12,7 @@
 <body>
 
 <div class="container">
-    <form class="signin-form bg-white p-3 rounded" action="#" method="post">
+    <form class="signin-form bg-white p-3 rounded" action="#" method="post" onsubmit="return validateForm()">
         <h2 class="text-center mb-4">Sign In</h2>
         <div class="form-group">
             <label for="username">Username:</label>
@@ -25,6 +25,18 @@
         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
     </form>
     <div id="error-message" class="alert alert-danger mt-3" style="display: none;"></div>
+
+    <div class="spinner-options mt-3">
+        <p class="text-center">Choose Sign In As:</p>
+        <div class="text-center">
+            <button class="btn btn-info mr-2" onclick="showSpinner('student')">Student Login</button>
+            <button class="btn btn-info" onclick="showSpinner('teacher')">Teacher Login</button>
+        </div>
+        <div id="spinner" class="text-center" style="display: none;">
+            <!-- Add your spinner code here -->
+            <!-- For example: <div class="spinner-border text-primary" role="status"></div> -->
+        </div>
+    </div>
 </div>
 
 <script>
@@ -33,20 +45,22 @@
         var password = document.getElementById('password').value;
 
         if (username === '' || password === '') {
-            
             var errorMessage = document.getElementById('error-message');
             errorMessage.innerHTML = 'Please enter both username and password.';
             errorMessage.style.display = 'block';
-
-            
             return false;
         }
 
-        
         return true;
     }
-</script>
 
+    function showSpinner(type) {
+        var spinnerDiv = document.getElementById('spinner');
+        // Display your spinner or perform other actions based on the selected type (student/teacher)
+        // Example: spinnerDiv.innerHTML = '<div class="spinner-border text-primary" role="status"></div>';
+        spinnerDiv.style.display = 'block';
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
