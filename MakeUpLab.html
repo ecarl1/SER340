@@ -1,16 +1,60 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Make Up Labs</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="MakeUpLab.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            max-width: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            display: none;
+        }
+
+        #notification-content {
+            font-size: 16px;
+            color: #333;
+        }
+
+        #show-notification-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #show-notification-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <form action="#" method="post">
+<div class="container">
+    <form action="#" method="post" id="makeup-lab-form">
         <h2 class="text-center mb-4">Make Up Labs</h2>
         <div class="form-group">
             <label for="name">Name:</label>
@@ -24,13 +68,54 @@
             <label for="req-skill">Required Skill:</label>
             <input type="text" class="form-control" id="req-skill" name="req-skill" required>
         </div>
-	<div class="form-group">
-	  <label for="lab-date">Lab Date:</label>
-	  <input type="date" id="lab-date" name="lab-date" value="2023-12-06" min="2023-01-01" max="2024-12-31" />
-	</div>
-        <button type="submit" class="btn btn-primary btn-block">Join Lab</button>
+        <div class="form-group">
+            <label for="lab-date">Lab Date:</label>
+            <input type="date" id="lab-date" name="lab-date" value="2023-12-06" min="2023-01-01" max="2024-12-31" />
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="joinLab()">Join Lab</button>
     </form>
 </div>
 
+<div id="notification-container">
+    <div id="notification-content">Lab joined successfully!</div>
+</div>
+
+<script>
+    function joinLab() {
+        var name = document.getElementById('name').value;
+        var labname = document.getElementById('labname').value;
+        var reqSkill = document.getElementById('req-skill').value;
+        var labDate = document.getElementById('lab-date').value;
+
+        // Check if all fields are filled out
+        if (name && labname && reqSkill && labDate) {
+            // You can perform further actions here, such as sending the data to a server or storing it locally.
+            alert('Lab joined successfully!\nName: ' + name + '\nLab Name: ' + labname + '\nRequired Skill: ' + reqSkill + '\nLab Date: ' + labDate);
+
+            // Show notification
+            showNotification();
+
+            // Optional: Clear the form after joining the lab
+            document.getElementById('makeup-lab-form').reset();
+        } else {
+            alert('Please fill out all fields before joining the lab.');
+        }
+    }
+
+    function showNotification() {
+        var notificationContainer = document.getElementById('notification-container');
+        notificationContainer.style.display = 'block';
+
+        // You can customize the notification content here
+        var notificationContent = document.getElementById('notification-content');
+        notificationContent.innerHTML = 'Lab joined successfully!';
+
+        // Hide the notification after a few seconds (e.g., 5 seconds in this case)
+        setTimeout(function () {
+            notificationContainer.style.display = 'none';
+        }, 5000);
+    }
+</script>
 
 </body>
+</html>

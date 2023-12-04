@@ -22,7 +22,6 @@
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
     </form>
     <div id="error-message" class="alert alert-danger mt-3" style="display: none;"></div>
 
@@ -56,9 +55,15 @@
 
     function showSpinner(type) {
         var spinnerDiv = document.getElementById('spinner');
-        // Display your spinner or perform other actions based on the selected type (student/teacher)
-        // Example: spinnerDiv.innerHTML = '<div class="spinner-border text-primary" role="status"></div>';
-        spinnerDiv.style.display = 'block';
+
+        
+        if (type === 'student' && validateForm() == true) {
+            // Redirect to MakeUpLab.html for student login
+            window.location.href = 'MakeUpLab.html';
+        } else if (type === 'teacher' && validateForm() == true) {
+            // Redirect to start.html for teacher login
+            window.location.href = 'start.html';
+        }
     }
 </script>
 

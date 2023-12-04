@@ -11,9 +11,24 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+        }
+
+        #header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        #header a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
         }
 
         #attendance-form {
@@ -21,6 +36,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
 
         label {
@@ -51,6 +67,11 @@
 </head>
 <body>
 
+<div id="header">
+    <a href="start.html">Attendance Recording</a>
+    <a href="createLab.html">Create Lab</a>
+</div>
+
 <div id="attendance-form">
     <h2>Attendance Recording</h2>
     <form id="record-form">
@@ -72,12 +93,16 @@
         var studentName = document.getElementById('studentName').value;
         var attendanceStatus = document.getElementById('attendanceStatus').value;
 
-        // You can perform further actions here, such as sending the data to a server or storing it locally.
+        // Check if both fields are filled out
+        if (studentName && attendanceStatus) {
+            // You can perform further actions here, such as sending the data to a server or storing it locally.
+            alert('Attendance recorded for ' + studentName + ': ' + attendanceStatus);
 
-        alert('Attendance recorded for ' + studentName + ': ' + attendanceStatus);
-        
-        // Optional: Clear the form after recording attendance
-        document.getElementById('record-form').reset();
+            // Optional: Clear the form after recording attendance
+            document.getElementById('record-form').reset();
+        } else {
+            alert('Please fill out all fields before recording attendance.');
+        }
     }
 </script>
 
