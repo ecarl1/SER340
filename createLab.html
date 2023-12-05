@@ -14,7 +14,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh; /* Ensure the content fills at least the viewport height */
         }
 
         #header {
@@ -95,6 +95,29 @@
         #show-notification-btn:hover {
             background-color: #45a049;
         }
+
+        /* Footer styles */
+        #footer {
+            margin-top: auto;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        #footer button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #footer button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -124,21 +147,20 @@
     <div id="notification-content">Lab successfully created!</div>
 </div>
 
+<!-- Logout button in the footer -->
+<div id="footer">
+    <button onclick="logout()">Logout</button>
+</div>
+
 <script>
     function createLab() {
         var instructorName = document.getElementById('instructorName').value;
         var labName = document.getElementById('labName').value;
         var labDate = document.getElementById('labDate').value;
 
-        // Check if all fields are filled out
         if (instructorName && labName && labDate) {
-            // You can perform further actions here, such as sending the data to a server or storing it locally.
             alert('Lab created:\nInstructor: ' + instructorName + '\nLab Name: ' + labName + '\nDate: ' + labDate);
-
-            // Show notification
             showNotification();
-
-            // Optional: Clear the form after creating the lab
             document.getElementById('create-lab-form').reset();
         } else {
             alert('Please fill out all fields before creating the lab.');
@@ -148,15 +170,15 @@
     function showNotification() {
         var notificationContainer = document.getElementById('notification-container');
         notificationContainer.style.display = 'block';
-
-        // You can customize the notification content here
         var notificationContent = document.getElementById('notification-content');
         notificationContent.innerHTML = 'Lab successfully created!';
-
-        // Hide the notification after a few seconds (e.g., 5 seconds in this case)
         setTimeout(function () {
             notificationContainer.style.display = 'none';
         }, 5000);
+    }
+
+    function logout() {
+        window.location.href = "signin.html";
     }
 </script>
 
