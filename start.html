@@ -6,19 +6,19 @@
     <title>Attendance Recording</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         #header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
             padding: 10px;
             text-align: center;
@@ -37,6 +37,7 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
+            width: 300px;
         }
 
         label {
@@ -52,7 +53,7 @@
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #28a745;
             color: #fff;
             padding: 10px;
             border: none;
@@ -61,12 +62,12 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #218838;
         }
+
         #footer {
-            /* Add the following styles to position the footer at the bottom */
             margin-top: auto;
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
             padding: 10px;
             text-align: center;
@@ -74,8 +75,7 @@
         }
 
         #footer button {
-            /* Add some styling for the button */
-            background-color: #4caf50;
+            background-color: #dc3545;
             color: #fff;
             padding: 10px;
             border: none;
@@ -84,7 +84,7 @@
         }
 
         #footer button:hover {
-            background-color: #45a049;
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -120,12 +120,8 @@
         var studentName = document.getElementById('studentName').value;
         var attendanceStatus = document.getElementById('attendanceStatus').value;
 
-        // Check if both fields are filled out
         if (studentName && attendanceStatus) {
-            // You can perform further actions here, such as sending the data to a server or storing it locally.
             alert('Attendance recorded for ' + studentName + ': ' + attendanceStatus);
-
-            // Optional: Clear the form after recording attendance
             document.getElementById('record-form').reset();
         } else {
             alert('Please fill out all fields before recording attendance.');
