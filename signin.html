@@ -121,6 +121,20 @@
             return false;
         }
 
+        // Check if username contains "@quinnipiac.edu"
+        if (!username.includes('@quinnipiac.edu')) {
+            errorMessage.innerHTML = 'Please use a valid Quinnipiac University email address.';
+            errorMessage.style.display = 'block';
+            return false;
+        }
+
+        if (username === '' || password === '') {
+            errorMessage.innerHTML = 'Please enter both username and password.';
+            errorMessage.style.display = 'block';
+            return false;
+        }
+
+
         return true;
     }
 

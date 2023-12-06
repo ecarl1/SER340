@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Lab</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             display: flex;
@@ -23,6 +24,8 @@
             padding: 10px;
             text-align: center;
             width: 100%;
+            display: flex;
+            justify-content: space-around;
         }
 
         #header a {
@@ -53,7 +56,7 @@
         }
 
         button {
-            background-color: #28a745;
+            background-color: #4caf50;
             color: #fff;
             padding: 10px;
             border: none;
@@ -62,27 +65,28 @@
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #45a049;
         }
 
-        #notification-container {
+        .modal {
+            display: none;
             position: fixed;
-            top: 20px;
-            right: 20px;
-            max-width: 300px;
-            background-color: #fff;
-            border: 1px solid #ddd;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 16px;
-            display: none;
+            text-align: center;
         }
 
-        #notification-content {
-            font-size: 16px;
-            color: #333;
-        }
-
+        /* Footer styles */
         #footer {
             margin-top: auto;
             background-color: #343a40;
@@ -129,10 +133,14 @@
     </form>
 </div>
 
-<div id="notification-container">
-    <div id="notification-content">Lab successfully created!</div>
+<!-- Notification modal -->
+<div class="modal" id="notificationModal">
+    <div class="modal-content">
+        <div id="notification-content">Lab successfully created!</div>
+    </div>
 </div>
 
+<!-- Logout button in the footer -->
 <div id="footer">
     <button onclick="logout()">Logout</button>
 </div>
@@ -144,21 +152,27 @@
         var labDate = document.getElementById('labDate').value;
 
         if (instructorName && labName && labDate) {
-            alert('Lab created:\nInstructor: ' + instructorName + '\nLab Name: ' + labName + '\nDate: ' + labDate);
-            showNotification();
+            // Show the notification modal with lab details
+            showNotification('Lab successfully created!\nLab Name: ' + labName + '\nLab Date: ' + labDate + '\nInstructor: ' + instructorName);
+
+            // Optional: Clear the form after creating the lab
             document.getElementById('create-lab-form').reset();
         } else {
             alert('Please fill out all fields before creating the lab.');
         }
     }
 
-    function showNotification() {
-        var notificationContainer = document.getElementById('notification-container');
-        notificationContainer.style.display = 'block';
+    function showNotification(message) {
+        var notificationModal = document.getElementById('notificationModal');
+        notificationModal.style.display = 'block';
+
+        // You can customize the notification content here
         var notificationContent = document.getElementById('notification-content');
-        notificationContent.innerHTML = 'Lab successfully created!';
+        notificationContent.innerHTML = message;
+
+        // Hide the notification modal after a few seconds (e.g., 5 seconds in this case)
         setTimeout(function () {
-            notificationContainer.style.display = 'none';
+            notificationModal.style.display = 'none';
         }, 5000);
     }
 
