@@ -83,7 +83,6 @@
             text-align: center;
         }
 
-        /* Footer styles */
         #footer {
             margin-top: auto;
             background-color: #343a40;
@@ -133,7 +132,6 @@
     </form>
 </div>
 
-<!-- Notification modal -->
 <div class="modal" id="notificationModal">
     <div class="modal-content">
         <div id="notification-content">Attendance recorded successfully!</div>
@@ -152,10 +150,8 @@
         var attendanceStatus = document.getElementById('attendanceStatus').value;
 
         if (studentName && attendanceDate && attendanceStatus) {
-            // Show the notification modal with personalized message
             showNotification('Attendance recorded for ' + studentName + ' on ' + attendanceDate + ': ' + attendanceStatus);
 
-            // Optional: Clear the form after recording attendance
             document.getElementById('record-form').reset();
         } else {
             alert('Please fill out all fields before recording attendance.');
@@ -166,11 +162,9 @@
         var notificationModal = document.getElementById('notificationModal');
         notificationModal.style.display = 'block';
 
-        // You can customize the notification content here
         var notificationContent = document.getElementById('notification-content');
         notificationContent.innerHTML = message;
 
-        // Hide the notification modal after a few seconds (e.g., 5 seconds in this case)
         setTimeout(function () {
             notificationModal.style.display = 'none';
         }, 5000);

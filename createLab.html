@@ -133,14 +133,12 @@
     </form>
 </div>
 
-<!-- Notification modal -->
 <div class="modal" id="notificationModal">
     <div class="modal-content">
         <div id="notification-content">Lab successfully created!</div>
     </div>
 </div>
 
-<!-- Logout button in the footer -->
 <div id="footer">
     <button onclick="logout()">Logout</button>
 </div>
@@ -152,10 +150,8 @@
         var labDate = document.getElementById('labDate').value;
 
         if (instructorName && labName && labDate) {
-            // Show the notification modal with lab details
             showNotification('Lab successfully created!\nLab Name: ' + labName + '\nLab Date: ' + labDate + '\nInstructor: ' + instructorName);
 
-            // Optional: Clear the form after creating the lab
             document.getElementById('create-lab-form').reset();
         } else {
             alert('Please fill out all fields before creating the lab.');
@@ -166,11 +162,9 @@
         var notificationModal = document.getElementById('notificationModal');
         notificationModal.style.display = 'block';
 
-        // You can customize the notification content here
         var notificationContent = document.getElementById('notification-content');
         notificationContent.innerHTML = message;
 
-        // Hide the notification modal after a few seconds (e.g., 5 seconds in this case)
         setTimeout(function () {
             notificationModal.style.display = 'none';
         }, 5000);

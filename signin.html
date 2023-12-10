@@ -121,7 +121,7 @@
             return false;
         }
 
-        // Check if username contains "@quinnipiac.edu"
+        //Check if username contains "@quinnipiac.edu"
         if (!username.includes('@quinnipiac.edu')) {
             errorMessage.innerHTML = 'Please use a valid Quinnipiac University email address.';
             errorMessage.style.display = 'block';
@@ -142,17 +142,15 @@
         var spinnerDiv = document.getElementById('spinner');
 
         if (type === 'student' && validateForm()) {
-            // Simulate loading with a delay (2 seconds)
+            //loading with a delay (2 seconds)
             spinnerDiv.style.display = 'block';
             setTimeout(function () {
-                // Redirect to MakeUpLab.html for student login
                 window.location.href = 'MakeUpLab.html';
             }, 2000);
         } else if (type === 'teacher' && validateForm()) {
-            // Simulate loading with a delay (2 seconds)
+            //loading with a delay (2 seconds)
             spinnerDiv.style.display = 'block';
             setTimeout(function () {
-                // Redirect to start.html for teacher login
                 window.location.href = 'start.html';
             }, 2000);
         }
@@ -169,7 +167,6 @@
     }
 
     function resetPassword() {
-        // Placeholder for resetting password (conceptual, not functional)
         alert('Password reset email sent to: ' + document.getElementById('forgot-email').value);
         closeForgotPasswordPopup();
     }
